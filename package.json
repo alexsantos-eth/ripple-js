@@ -1,6 +1,6 @@
 {
-  "name": "ripplejs",
-  "version": "1.0.0",
+  "name": "ripplefx",
+  "version": "1.0.1",
   "description": "Material design ripple efect with JavaScript",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/alexsan-dev/ripple-js.git"
   },
   "keywords": [
-    "ripple-js"
+    "ripple", "material design","css"
   ],
   "author": "AlexSantos",
   "license": "MIT",

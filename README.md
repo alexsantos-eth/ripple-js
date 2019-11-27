@@ -8,7 +8,7 @@ git clone https://github.com/alexsan-dev/ripple-js.git
 
 Install npm 🔧
 ```
-npm i ripple-js
+npm i ripplefx
 ```
 
 CDN script tag
@@ -22,4 +22,6 @@ Using ⚒️
 import 'ripple-js';
 // on HTML or JSX
 <div class="waves"></div>
+// Dark ripple
+<div class="waves waves-dark"></div>
 ```
