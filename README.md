@@ -12,7 +12,7 @@ npm i ripple-js
 ```
 
 CDN script tag
-```
+```javascript
 <script href="https://raw.githubusercontent.com/alexsan-dev/ripple-js/master/index.js"></script>
 ```
 
