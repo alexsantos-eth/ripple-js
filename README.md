@@ -1,4 +1,4 @@
-# ripple-js
+# Ripple.js
 ## Material design ripple effect with JavaScript
 
 Download 
