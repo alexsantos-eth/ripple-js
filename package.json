@@ -1,0 +1,22 @@
+{
+  "name": "ripplejs",
+  "version": "1.0.0",
+  "description": "Material design ripple efect with JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsan-dev/ripple-js.git"
+  },
+  "keywords": [
+    "ripple-js"
+  ],
+  "author": "AlexSantos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexsan-dev/ripple-js/issues"
+  },
+  "homepage": "https://github.com/alexsan-dev/ripple-js#readme"
+}
