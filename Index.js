@@ -2,17 +2,17 @@
 const surface = document.querySelectorAll('.waves');
 
 // Create Circle
-const ripple = e => {
+function ripple(e){
   // Create circle and set globals.
   let circle = document.createElement("div");
-  let d = Math.max(this.clientWidth, this.clientHeight);
-  let rect = this.getBoundingClientRect();
-  let time = (Math.log(d)/Math.log(Math.exp(1)))/11;
+  let maxLarge = Math.max(this.clientWidth, this.clientHeight);
+  let rectSurface = this.getBoundingClientRect();
+  let time = (Math.log(maxLarge)/Math.log(Math.exp(1)))/11;
   
   // Set circle dimentions
-  circle.style.width = circle.style.height = d + "px";
-  circle.style.left = e.clientX - rect.left -d/2 + "px";
-  circle.style.top = e.clientY - rect.top -d/2 + "px";
+  circle.style.width = circle.style.height = maxLarge + "px";
+  circle.style.left = e.clientX - rectSurface.left -maxLarge/2 + "px";
+  circle.style.top = e.clientY - rectSurface.top -maxLarge/2 + "px";
   
   // Add style and animation time
   circle.classList.add("ripple");
