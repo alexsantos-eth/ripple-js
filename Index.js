@@ -1,6 +1,19 @@
-// Select surface
+// Select surface and style
 const surface = document.querySelectorAll('.waves');
+surface.style.cssText = `
+position:relative;
+overflow:hidden;
+`
 
+// Add keyframes
+document.body.style.cssText = `
+@keyframes ripple{
+  to{
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+`
 // Create Circle
 function ripple(e){
   // Create circle and set globals.
@@ -15,11 +28,17 @@ function ripple(e){
   circle.style.top = e.clientY - rectSurface.top -maxLarge/2 + "px";
   
   // Add style and animation time
-  circle.classList.add("ripple");
+  circle.style.cssText = `
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  transform: scale(0);
+  z-index:1;
+  `;
   circle.style.animation = `ripple ${time}s ease-in`;
   
   // Set dark ripple
-  if(this.classList.contains("waves-dark")) circle.classList.add("ripple-dark");
+  if(this.classList.contains("waves-dark")) circle.style.backgroundColor = " rgba(0,0,0, 0.2)";
   
   // Add to element and destroy
   this.appendChild(circle);
