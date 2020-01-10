@@ -1,0 +1,233 @@
+#! / bin / bash
+
+# _ ___ _ _ _ ____ _____ _ _ ______ __ ____ ___ _____ 
+# | | / / | El | El | \ | | / ___ | El | ___ | El | El | El | _ \ \ / / _ / ___ | _ _ | _ _ |
+# | '/ | El | El | El | \ | El | El | _ | | _ | El | El | El | | _) \ V / _ | | _ | El | _ | El | El | El |  
+# | . \ | | _ | El | | \ | | _ | El | El | _ | El | | _ | El | _ <| El | | _ _ | El | | _ | || El | El | El |  
+# | _ | \ _ \\ ___ / | _ | \ _ | \ ____ | | _ | \ ___ / | _ | \ _ \ | _ | | _ | \ ____ | ___ | | _ |  
+# #                                                                                                                        
+# Un script bash en el tema de Kung Fury, utilizando git --date para cometer 
+# en el pasado. Efectivamente hackeándote en el tiempo.
+
+# Las confirmaciones de Git se realizan una vez al día al lanzar monedas al azar psuedo de la
+# fecha de inicio elegida. Simplemente ejecute esto nuevamente si su densidad de confirmación deseada es
+# menos de lo deseado.
+
+# Mire esto para obtener referencias de películas GUI: https://youtu.be/bS5P_LAqiVg?t=9m52s
+
+# Autor: William Golembieski
+# Correo electrónico: BillGolembieski@projectu23.com
+
+################################################## #############################
+
+# Quería ver cuántas veces se ejecuta esto. Google Analytics simple.
+export analytics_id = "UA-89577187-1"
+categoría de exportación = "AppCounter"
+export action = "CountAction"
+etiqueta de exportación = "CountLabel"
+valor de exportación = "1"
+
+curl -s -X POST \
+        -d 'v = 1 & tid =' "$ analytics_id" '& cid = 555 & t = event & ec =' "$ category" \
+        '& ea =' "$ action" '& el =' "$ label" '& ev =' "$ value" '' \
+        -H "User-Agent: AppSpecific" \
+        https://www.google-analytics.com/collect> / dev / null &
+        
+################################################## #############################
+
+# Comprobar si el usuario es root
+si ["$ EUID" -ne 0]; luego
+	echo "Por favor, ejecuta como root. Prueba sudo bash timehack"
+	salida
+fi
+
+################################################## #############################
+
+# Obtener OS
+plataforma de exportación = 'desconocido'
+export system_name = `uname`
+if [["$ system_name" == 'Linux']]; luego
+	plataforma = 'linux'
+elif [["$ system_name" == 'Darwin']]; luego
+	plataforma = 'osx'
+fi
+
+################################################## #############################
+
+# Carga completa
+cuadro de diálogo --backtitle "GitHub Time Hacker" --infobox "LOAD COMPLETE". 3 20
+dormir 1.25
+
+################################################## #############################
+
+# Inicializando secuencia de pirateo
+export hacker_github_name = ""
+exportar hacker_email = ""
+
+exec 3> & 1
+
+diálogo --separate-widget $ '\ n' --ok-label "Enviar" \
+	--backtitle "GitHub Time Hacker" \
+	- título "INICIALIZANDO LA SECUENCIA DE HACK"
+	--form "\ nIntroduzca la información de GitHub: \ nUtilice flechas o haga clic para mover" \
+	12 50 0 \
+	"Nombre de usuario:" 1 1 "$ hacker_github_name" 1 10 20 0 \
+	"Correo electrónico:" 2 1 "$ hacker_email" 2 10 40 0 ​​\
+2> & 1 1> & 3 | {
+	leer -r hacker_github_name
+	leer -r hacker_email
+	código de salida = $?
+
+	if ["$ exitcode" = 0]; luego
+		git config - global credential.helper cache
+		git config - global credential.helper 'cache --timeout = 600'
+		git config --global user.email "$ hacker_email"
+		git config --global user.name "$ hacker_github_name"
+		git config --global push.default simple
+
+	más
+		eco
+		echo "Abortado"
+		salida
+	fi
+}
+exec 3> & -
+    
+################################################## #############################
+
+# Initalizing Time Portal Screens
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "INICIALIZANDO EL PORTAL DE TIEMPO". 3 31
+dormir .9
+
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "PORTAL DE INICIALIZACIÓN DEL TIEMPO .." 3 31
+dormir .9
+
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "INICIALIZANDO EL PORTAL DEL TIEMPO ..." 3 31
+dormir .9
+
+################################################## #############################
+
+# Entrada de calendario
+date_picked = $ (dialog --stdout --title "TIME PORTAL" \
+		--backtitle "GitHub Time Hacker" \
+		--no-cancel \
+		--date-format '% Y% m% d' \
+		--calendar "\ nSeleccione una fecha para hackear \ nback a tiempo para:" \
+		0 0)
+                 
+if ["$ date_picked"! = ""]; luego
+
+    if ["$ platform" = "linux"]; luego
+		d1 = $ (fecha -d "00:00" +% s)
+		d2 = $ (date -d $ date_picked +% s)
+	elif ["$ plataforma" = "osx"]; luego
+		d1 = $ (fecha -j -f "% a% b% d% T% Z% Y" "` fecha` "" +% s ")
+		d2 = $ (fecha -j -f "% Y% m% d" "$ date_picked" "+% s")
+	más
+		d1 = $ (fecha -d "00:00" +% s)
+		d2 = $ (date -d $ date_picked +% s)
+	fi
+	
+	days_diff = $ ((($ d1- $ d2) / 86400))
+
+más
+    eco
+    echo "Abortado"
+	salida
+fi
+
+################################################## #############################
+
+# Comprometerse
+daysHacked = 0
+hasta ["$ daysHacked" -eq "$ days_diff"]
+hacer
+	FLIP = $ (($ RANDOM% 10))
+	
+	si [$ FLIP -ge 2]; luego
+		if ["$ platform" = "linux"]; luego
+    	d = $ (date -d "$ date_picked + $ daysHacked days" +% b ""% d "00:00"% Y)
+
+		elif ["$ plataforma" = "osx"]; luego
+	d = $ (fecha -j -f "% a% b% d% T% Z% Y" "` fecha -v + "$ días Hackeado" "d" `" \
+	"+% ​​b% d 00:00% Y")
+
+		más
+	d = $ (date -d "$ date_picked + $ daysHacked days" +% b ""% d "00:00"% Y)
+	fi
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado"
+	
+	si [$ FLIP -ge 4]; luego
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 2x"
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 2x"
+	
+			si [$ FLIP -ge 8]; luego
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 3x"
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 3x"
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 3x"
+	
+				si [$ FLIP = 9]; luego
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 4x"
+	git commit --quiet --allow-empty --date = "$ d" -m "Tiempo pirateado 4x"
+
+				fi
+			fi
+		fi
+	fi
+((daysHacked ++))
+hecho
+
+################################################## #############################
+
+# E = Convertidor mc2
+COUNT = 10
+(
+mientras prueba $ COUNT! = 110
+hacer
+	echo $ COUNT
+	echo "XXX"
+	echo "ALGORITMOS DE CONVERSIÓN EN MARCHA"
+	echo "XXX"
+	COUNT = `expr $ COUNT + 10`
+	dormir .5
+hecho
+) | cuadro de diálogo --título "E = mc2 CONVERTER" --gauge "" 8 70 0
+
+################################################## #############################
+
+# E = mensaje mc3
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "E = mc3" 3 31
+dormir .9
+
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "" 3 31
+dormir .9
+
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "E = mc3" 3 31
+dormir .9
+
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "" 3 31
+dormir .9
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	--infobox "E = mc3" 3 31
+dormir .9
+
+################################################## #############################
+
+# Estás a punto de hackear el tiempo, ¿estás seguro?
+cuadro de diálogo --backtitle "GitHub Time Hacker" \
+	- título "ADVERTENCIA" \
+	--sino "\ n ¿ESTÁS ACERCA DE \ nHACK HACK, \ n ¿ESTÁS SEGURO?" 10 30
+       
+yn_response = $?
+caso $ yn_response en
+	0) empuje git ;;
+	1) echo "Abortado";
+	255) echo "Abortado";
+esac
